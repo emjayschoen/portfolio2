@@ -215,13 +215,16 @@ $(document).ready(function(){
 
 	/* Experimental Modal Box JS */
 
+	/*
+
 	$(".piece").click( function(event){
 		/*$(this).css({
 			"left": $(this).offset().left, 
 			"top": $(this).offset().top-$(window).scrollTop(), 
 			"position": "fixed"
 		});
-		$(this).delay(100).css({"transition": "all .3s ease-in-out"});*/
+		$(this).delay(100).css({"transition": "all .3s ease-in-out"});*/ 
+		/*
 		$("html").addClass("modal-on");
 		$(this).addClass("modal-box");
 	});
@@ -229,29 +232,8 @@ $(document).ready(function(){
 		$("html").removeClass("modal-on");
 		$(".piece").removeClass("modal-box");
 		/* $(".piece").removeClass("modal-box").css({"top": "0", "left": "0", "position": "relative", "transition": "none"});*/
-	});
-
-
-	var elements = document.getElementsByID('*');
-
-	var unique = function (list, x) {
-	    if (x != "" && list.indexOf(x) === -1) {
-	        list.push(x);
-	    }
-	    return list;
-	};
-
-	var trim = function (x) { return x.trim(); };
-
-	var classes = [].reduce.call(elements, function (acc, e) {
-	    return e.className.split(' ').map(trim).reduce(unique, acc);
-	}, []);
-	console.log(classes[1]);
-	var i = 0;
-
-	for(i = 0; i < classes.length; i++){
-		console.log(classes[i]);
-	}
+		/*
+	}); */
 
 	
 });
