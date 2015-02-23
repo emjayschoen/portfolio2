@@ -59,8 +59,8 @@
 }
 
 /** * Based on Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
-html {box-sizing:border-box;}
 html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;box-sizing:inherit;}
+html {box-sizing:border-box;}
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
 body {line-height: 1;}
@@ -89,8 +89,10 @@ body{
 	height: auto;
 	max-width: 1350px;
 	width: 100%;
-	font-size: 16px;
 	overflow-x: hidden;
+
+	font-family: Georgia, serif;
+	font-size: 16px;
 }
 
 #main-wrap {
@@ -126,6 +128,80 @@ a {
 }
 .bebas-ly {
 	margin-left: -2.3px;
+}
+
+/* General Icons */
+
+.btn-link {
+	width: 44px;
+	height: 44px;
+	background: #f2f2f2;
+	cursor:pointer;
+}
+
+.icon {
+	position: relative;
+	background: #888;
+	-webkit-transition: all .7s ease .1s;
+    -moz-transition: all .7s ease .1s;
+    -o-transition: all .7s ease .1s;
+	transition: all .7s ease .1s;
+}
+.icon-slab-slice {
+	width: 28px;
+	height: 4px;
+}
+.icon-3-slab .icon::before {
+	content: "";
+	position: absolute;
+	top: 9px;
+	width: inherit;
+	height: inherit;
+	background: inherit;
+	-webkit-transition: inherit;
+    -moz-transition: inherit;
+    -o-transition: inherit;
+	transition: inherit;
+}
+.icon-3-slab .icon::after {
+	content: "";
+	position: absolute;
+	top: 18px;
+	width: inherit;
+	height: inherit;
+	background: inherit;
+	-webkit-transition: inherit;
+    -moz-transition: inherit;
+    -o-transition: inherit;
+	transition: inherit;
+}
+.icon-close {
+	position: absolute;
+	opacity: 1;
+	visibility: visible;
+	-webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+.icon-close .icon {
+    -webkit-transform: rotate(45deg); 
+	-ms-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	top: 10px;
+}
+.icon-close .icon::before {
+	opacity: 0;
+}
+.icon-close .icon::after {
+	-webkit-transform: rotate(-95deg); 
+	-ms-transform: rotate(-95deg);
+	-moz-transform: rotate(-95deg);
+	-o-transform: rotate(-95deg);
+	transform: rotate(-95deg);
+	top: 0;
 }
 
 /* HEADER */
@@ -251,7 +327,7 @@ a {
 	padding: 0;
 }
 
-.nav {
+.nav-item {
 	margin: 0;
 	padding: 10px 0;
 	font-family: Bebas Neue;
@@ -289,7 +365,7 @@ a {
 	margin-bottom: 10px;
 	display: none;
 }
-.nav-piece{
+.nav-subitem{
 	position: relative;
 	height: 32px;
 	-webkit-transition: all .1s ease;
@@ -310,6 +386,10 @@ a {
     -o-transition: all .1s ease;
 	transition: all .1s ease;
 }
+.nav-subitem:hover .nav-img {
+	opacity: .5;
+	filter: alpha(opacity=.5);
+}
 .nav-title{
 	display: none;
 	float: right;
@@ -325,26 +405,16 @@ a {
 	opacity: .8;
 	filter: alpha(opacity=.8);
 }
-.nav-piece:hover .nav-title {
+
+.nav-subitem:hover {
+	height: 32px !important;
+}
+.nav-subitem:hover .nav-title {
 	display: block;
 }
-.highlight{
-	position: absolute;
-	right: 0;
-	z-index: 5;
-	height: 100%;
-	width: 32px;
-	background: #fff;
-	opacity: 0;
-	filter: alpha(opacity=0);
-}
-.highlight:hover{
-	opacity: .5;
-	filter: alpha(opacity=.5);
-}
 
-.nav-piece:hover {
-	height: 32px !important;
+#nav-btn, #nav-close-btn{
+	display: none;
 }
 
 /* MAIN CONTENT */
@@ -631,6 +701,7 @@ color: #CDC16E;
 } */
 
 
+
 /* MOBILE RESPONSIVENESS*/
 
 .mobile {
@@ -715,6 +786,7 @@ color: #CDC16E;
 
 	#nav-btn {
 		position: fixed;
+		display: block;
 		top: 0;
 		left: -1px;
 		width: 100%;
@@ -724,82 +796,16 @@ color: #CDC16E;
 	    -o-transition: all .3s ease;
 		transition: all .3s ease;
 	}
-
-	#nav-open-btn {
+	#nav-btn .btn-link {
 		position: absolute;
-		width: 44px;
-		height: 44px;
-		background: #f2f2f2;
-		cursor: pointer;
 		border-bottom-right-radius: 4px;
 	}
-	#nav-btn-symbol {
-		position: relative;
-		width: 28px;
-		height: 4px;
-		background: #888;
+	#nav-btn .icon, #nav-close-btn .icon{
 		margin: 11px auto 0;
-		-webkit-transition: all .7s ease .1s;
-	    -moz-transition: all .7s ease .1s;
-	    -o-transition: all .7s ease .1s;
-		transition: all .7s ease .1s;
-	}
-	#nav-btn-symbol::before {
-		content: "";
-		position: absolute;
-		top: 9px;
-		width: inherit;
-		height: inherit;
-		background: inherit;
-		-webkit-transition: inherit;
-	    -moz-transition: inherit;
-	    -o-transition: inherit;
-		transition: inherit;
-	}
-	#nav-btn-symbol::after {
-		content: "";
-		position: absolute;
-		top: 18px;
-		width: inherit;
-		height: inherit;
-		background: inherit;
-		-webkit-transition: inherit;
-	    -moz-transition: inherit;
-	    -o-transition: inherit;
-		transition: inherit;
 	}
 	#nav-close-btn {
-		position: absolute;
-		width: 44px;
-		height: 44px;
-		background: #f2f2f2;
-		cursor: pointer;
-		opacity: 1;
-		visibility: visible;
+		display: block;
 		z-index: 120;
-		-webkit-transition: all .3s ease;
-	    -moz-transition: all .3s ease;
-	    -o-transition: all .3s ease;
-		transition: all .3s ease;
-	}
-	#nav-close-btn #nav-btn-symbol {
-	    -webkit-transform: rotate(45deg); 
-		-ms-transform: rotate(45deg);
-		-moz-transform: rotate(45deg);
-		-o-transform: rotate(45deg);
-		transform: rotate(45deg);
-		top: 10px;
-	}
-	#nav-close-btn #nav-btn-symbol:before {
-		opacity: 0;
-	}
-	#nav-close-btn #nav-btn-symbol:after {
-		-webkit-transform: rotate(-95deg); 
-		-ms-transform: rotate(-95deg);
-		-moz-transform: rotate(-95deg);
-		-o-transform: rotate(-95deg);
-		transform: rotate(-95deg);
-		top: 0;
 	}
 
 
@@ -822,7 +828,7 @@ color: #CDC16E;
 		left: 0;
 		right: 0;
 		z-index: 5;
-		background: #404040;
+		background: #333;
 		/* background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 8%, rgba(0,0,0,0.7) 28%, rgba(22,22,22,0.7) 100%); /* FF3.6+ */
 		/* background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,1)), color-stop(8%,rgba(0,0,0,0.85)), color-stop(28%,rgba(0,0,0,0.7)), color-stop(100%,rgba(22,22,22,0.7))); /* Chrome,Safari4+ */
 		/* background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,0.85) 8%,rgba(0,0,0,0.7) 28%,rgba(22,22,22,0.7) 100%); /* Chrome10+,Safari5.1+ */
@@ -840,7 +846,7 @@ color: #CDC16E;
 
 	.js-nav-open #main-wrap::before {
 		visibility: visible;
-		opacity: 0.7;
+		opacity: 0.6;
 	}
 
 	.js-ready #nav {
@@ -892,11 +898,11 @@ color: #CDC16E;
 		opacity: 1 !important;
 	}
 
-	.js-ready .nav {
+	.js-ready .nav-item {
 		padding: 20px 15px;
 		border-bottom: 1px solid #BBB;
 	}
-	.js-ready #nav-work-title {
+	.js-ready #nav-item-work {
 		border: none;
 	}
 	.js-ready #expand-nav-works {
@@ -941,17 +947,18 @@ color: #CDC16E;
 		margin: 0;
 		background: #E0E0E0;
 	}
-	.js-ready .nav-piece {
+	.js-ready .nav-subitem {
 		height: 44px !important;
 		margin-right: 15px;
 		border-bottom: 1px solid #BBB;
 	}
-	.js-ready .nav-piece:hover {
+	.js-ready .nav-subitem:hover {
 		height: 44px !important;
 		opacity: .6;
 	}
-	.js-ready .highlight {
-		display: none;
+	.js-ready .nav-subitem:hover .nav-img {
+		opacity: 1;
+		filter: alpha(opacity=1);
 	}
 	.js-ready .nav-title {
 		display: block;
@@ -975,7 +982,7 @@ color: #CDC16E;
 	.js-nav-open, .js-nav-open #main-wrap {
 		overflow: hidden;
 	}
-	.js-nav-open #nav-btn-symbol {
+	.js-nav-open #nav-btn .icon {
 		-webkit-transform: rotate(45deg) translateZ(0); 
 		-ms-transform: rotate(45deg) translateZ(0);
 		-moz-transform: rotate(45deg) translateZ(0);
@@ -983,7 +990,7 @@ color: #CDC16E;
 		transform: rotate(45deg) translateZ(0);
 		margin-top: 21px;
 	}
-	.js-nav-open #nav-btn-symbol::after {
+	.js-nav-open #nav-btn .icon::after {
 		-webkit-transform: rotate(-90deg) translateZ(0); 
 		-ms-transform: rotate(-90deg) translateZ(0);
 		-moz-transform: rotate(-90deg) translateZ(0);
@@ -991,7 +998,7 @@ color: #CDC16E;
 		transform: rotate(-90deg) translateZ(0);
 		top: 0;
 	}
-	.js-nav-open #nav-btn-symbol::before {
+	.js-nav-open #nav-btn .icon::before {
 		-webkit-transform: rotate(-45deg) translateZ(0); 
 		-ms-transform: rotate(-45deg) translateZ(0);
 		-moz-transform: rotate(-45deg) translateZ(0);

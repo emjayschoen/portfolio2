@@ -45,12 +45,6 @@ $(document).ready(function(){
 		$(window).scroll(move);
 		move();
 	}
-	
-	
-
-	$(".detail-link").click( function(event){
-		$(".lightbox").fadeIn(200);
-	});
 
 
 	// Highlight the active section in the nav
@@ -118,20 +112,18 @@ $(document).ready(function(){
 	var MIN_HEIGHT = 12;
 	var $html = $('html');
 	var $mainWrap = $("#main-wrap");
-	var $navOpenBtn = $("#nav-open-btn");
+	var $navBtnLink = $("#nav-btn .btn-link");
 	var $navCloseBtn = $("#nav-close-btn");
 	var $nav = $("#nav");
-	var $navWorks = $(".nav-works");
-	var $navPieces = $(".nav-piece");
+	var $navSubitems = $(".nav-subitem");
 	var $navImages = $(".nav-img");
-	var $highlights = $(".highlight");
-	var navPieceHeight = $navPieces.height();
+	var navPieceHeight = $navSubitems.height();
 	var navPieceWidth = navPieceHeight;
-	var numNavPieces = $navPieces.length;
+	var numNavSubitems = $navSubitems.length;
 	var navBarHeight = $("#nav-bar").height() 
 		+ parseInt($("#nav-bar").css("marginTop"));
-	var extraMargin = parseInt($(".nav-works").css("marginBottom"));
-	var fullNavHeight = navBarHeight + navPieceHeight * numNavPieces + extraMargin;
+	var extraMargin = parseInt($navWorks.css("marginBottom"));
+	var fullNavHeight = navBarHeight + navPieceHeight * numNavSubitems + extraMargin;
 	var currNavHeight = fullNavHeight;
 
 
@@ -150,25 +142,24 @@ $(document).ready(function(){
 			// Adjust the size of nav thumbnails to fit height if non-mobile
 			if(windowHeight < fullNavHeight) {
 				var availableHeight = (windowHeight - navBarHeight - extraMargin - navPieceHeight);
-				var dHeight = Math.floor( (availableHeight) / numNavPieces );
+				var dHeight = Math.floor( (availableHeight) / numNavSubitems );
 				if(dHeight >= MIN_HEIGHT) {
 					$navWorks.height(availableHeight + navPieceHeight - dHeight - extraMargin);
-					$navPieces.height(dHeight);
+					$navSubitems.height(dHeight);
 					$navImages.css("width", navPieceWidth);
-					$highlights.css("width", navPieceWidth);
 				}
 
 			}
 			else {
 				$navWorks.height("");
-				$navPieces.height(navPieceHeight);
+				$navSubitems.height(navPieceHeight);
 			}
 		}
 
 	}
 
 	// Toggles the mobile nav slider
-	$navOpenBtn.click( function(event) {
+	$navBtnLink.click( function(event) {
 		$html.toggleClass("js-nav-open");
 	});
 
@@ -178,7 +169,7 @@ $(document).ready(function(){
 
 	// Mobile nav needed anchor tags to work with no-JS
 	// When JS is active, we need to remove them so localScroll doesn't abuse them
-	$($navOpenBtn, $navCloseBtn).removeAttr("href");
+	$($navBtnLink, $navCloseBtn).removeAttr("href");
 	$("#expand-nav-works").click( function(event) {
 		$(this).toggleClass("nav-works-open");
 		toggleNavWorks();
@@ -215,7 +206,6 @@ $(document).ready(function(){
 
 	/* Experimental Modal Box JS */
 
-	/*
 
 	$(".piece").click( function(event){
 		/*$(this).css({
@@ -224,16 +214,15 @@ $(document).ready(function(){
 			"position": "fixed"
 		});
 		$(this).delay(100).css({"transition": "all .3s ease-in-out"});*/ 
-		/*
-		$("html").addClass("modal-on");
+		$html.addClass("modal-on");
 		$(this).addClass("modal-box");
 	});
 	$(".modal-bg-shadow").click( function(event){
-		$("html").removeClass("modal-on");
+		$html.removeClass("modal-on");
 		$(".piece").removeClass("modal-box");
 		/* $(".piece").removeClass("modal-box").css({"top": "0", "left": "0", "position": "relative", "transition": "none"});*/
-		/*
-	}); */
+
+	});
 
 	
 });
