@@ -95,29 +95,21 @@ body{
 	font-size: 16px;
 }
 
-#main-wrap {
-	position: relative;
-	height: 100%;
-	background: #fff;
-	/* z-index: 1; Why was this here?? */
-	-webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -o-transition: all .3s ease;
-	transition: all .3s ease;
-}
-
-.col2, #intro, .main-col {
-	position: relative;
-	margin-left: 300px;
-}
-
-.col2, #intro, #contact {
-	width: 550px;
-}
-
 a {
-	text-decoration: underline;
+	text-decoration: none;
 	color: inherit;
+}
+
+.std-link {
+	color: #DD5368;
+	transition: all .2s ease;
+}
+.std-link:hover {
+	opacity: .5;
+}
+
+.starts-with-double-quote {
+	text-indent: -0.35em;
 }
 
 .bebas-ta {
@@ -130,160 +122,15 @@ a {
 	margin-left: -2.3px;
 }
 
-/* General Icons */
-
-.btn-link {
-	width: 44px;
-	height: 44px;
-	background: #f2f2f2;
-	cursor:pointer;
-}
-
-.icon {
+#main-wrap {
 	position: relative;
-	background: #888;
-	-webkit-transition: all .7s ease .1s;
-    -moz-transition: all .7s ease .1s;
-    -o-transition: all .7s ease .1s;
-	transition: all .7s ease .1s;
-}
-.icon-slab-slice {
-	width: 28px;
-	height: 4px;
-}
-.icon-3-slab .icon::before {
-	content: "";
-	position: absolute;
-	top: 9px;
-	width: inherit;
-	height: inherit;
-	background: inherit;
-	-webkit-transition: inherit;
-    -moz-transition: inherit;
-    -o-transition: inherit;
-	transition: inherit;
-}
-.icon-3-slab .icon::after {
-	content: "";
-	position: absolute;
-	top: 18px;
-	width: inherit;
-	height: inherit;
-	background: inherit;
-	-webkit-transition: inherit;
-    -moz-transition: inherit;
-    -o-transition: inherit;
-	transition: inherit;
-}
-.icon-close {
-	position: absolute;
-	opacity: 1;
-	visibility: visible;
+	height: 100%;
+	background: #fff;
+	/* z-index: 1; Why was this here?? */
 	-webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -o-transition: all .3s ease;
 	transition: all .3s ease;
-}
-.icon-close .icon {
-    -webkit-transform: rotate(45deg); 
-	-ms-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	transform: rotate(45deg);
-	top: 10px;
-}
-.icon-close .icon::before {
-	opacity: 0;
-}
-.icon-close .icon::after {
-	-webkit-transform: rotate(-95deg); 
-	-ms-transform: rotate(-95deg);
-	-moz-transform: rotate(-95deg);
-	-o-transform: rotate(-95deg);
-	transform: rotate(-95deg);
-	top: 0;
-}
-
-/* HEADER */
-
-#header{
-	width: 100%;
-	height: 185px;
-	background-color: #f1f1f1;
-	background: url("../images/header.jpg") no-repeat;
-	background-size: auto 100%;
-	background-position: 54px 0; 
-}
-
-#ux-design{
-	display: block;
-	padding-top: 65px;
-	height: 15px;
-}
-
-#best-designer-ever{
-	margin-top: 72px;
-	height: 45px;
-	cursor: pointer;
-}
-#best-designer-ever:hover{
-	opacity: .5;
-	filter: alpha(opacity=.5);
-}
-
-/* INTRO */
-
-#intro, #contact-content{
-	padding-top: 75px;
-	padding-bottom: 2.5em;
-}
-
-.intro-description:first-child {
-	margin-top: 0;
-}
-
-.intro-description {
-	margin: 1.5em 0;
-}
-
-.intro-description, .introduction {
-	color: #555;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 1.25em;
-	font-weight: 300;
-	line-height: 1em;
-}
-
-.transition {
-	font-style: italic;
-}
-
-.tagline {
-	margin: 35px 0 0px;
-	font-family: Bebas Neue;
-	font-weight: 300;
-	font-size: 1.75em;
-	line-height: 1.1em;
-	letter-spacing: .5px;
-	color: #444;
-}
-.tagline::before, .tagline::after {
-	display: inline-block;
-	content: "";
-	background: url("../images/smart-quote.png") no-repeat;
-	background-size: 11px auto;
-	height: 13px;
-	width: 11px;
-	vertical-align: top;
-}
-.tagline::before {
-	margin: 1px 3px 0px -14px;
-}
-.tagline::after {
-	margin-left: 2px;
-	-ms-transform: scaleX(-1) scaleY(-1);
-    -webkit-transform: scaleX(-1) scaleY(-1);
-	transform: scaleX(-1) scaleY(-1);
 }
 
 /* NAVIGATION */
@@ -319,12 +166,8 @@ a {
 	z-index: 1;
 	clear: both;
 }
-#nav-bar a {
+.nav-link {
 	text-decoration: none;
-}
-#nav-bar ul {
-	margin: 0;
-	padding: 0;
 }
 
 .nav-item {
@@ -340,14 +183,14 @@ a {
 	list-style: none;
 	cursor: pointer;
 }
-.nav:hover {
+.nav-item:hover {
 	opacity: .6;
 	filter: alpha(opacity=.6);
 }
-.nav:first-child {
+.nav-item:first-child {
 	padding-top: 0;
 }
-.nav:last-child {
+.nav-item:last-child {
 	padding-bottom: 0;
 }
 .nav-active {
@@ -419,56 +262,19 @@ a {
 
 /* MAIN CONTENT */
 
-/*.main-col {
-	position: absolute;
-	left: 300px;
-}
-
-//Should be any style that applies to the main column of content,
-no matter if it's the intro, a portfolio piece, blog post, contact, etc.
-Then you can attach qualifiers such as .main-content.middle or .main-content.full-width
-if you need to make it more flexible.
 .main-content {
-	
-}
-
-//the main content styles, aggregated:
-.col2, #intro, .main-col {
 	position: relative;
 	margin-left: 300px;
 }
 
-.col2, #intro, #contact {
+.core-column {
 	width: 550px;
 }
-@media (max-width: 1300px) {
-	.main-col {
-		width: 550px;
-	}
-	.col2, #intro, .main-col {
-		margin-left: 30%;
-	}
+
+.main-content:nth-child(2) {
+	padding-top: 75px;
+	padding-bottom: 2.5em;
 }
-@media (max-width: 650px) {
-
-	.main-col, .col2 {
-		position: static;
-		width: 90%;
-		margin-left: auto;
-		margin-right: auto;
-		padding: 0;
-	}
-
-	#intro {
-		width: 90%;
-		margin-left: auto;
-		margin-right: auto;
-		padding-left: 0;
-	}
-}
-
-
-*/
 
 #work-divider {
 	margin-top: 0;
@@ -559,6 +365,149 @@ if you need to make it more flexible.
 	width: 550px;
 	height: 1px;
 	background-color: #a3a3a3;
+}
+
+
+/* General Icons */
+
+.btn-link {
+	width: 44px;
+	height: 44px;
+	background: #f2f2f2;
+	cursor:pointer;
+}
+
+.icon {
+	position: relative;
+	background: #888;
+	-webkit-transition: all .7s ease .1s;
+    -moz-transition: all .7s ease .1s;
+    -o-transition: all .7s ease .1s;
+	transition: all .7s ease .1s;
+}
+.icon-slab-slice {
+	width: 28px;
+	height: 4px;
+}
+.icon-3-slab .icon::before {
+	content: "";
+	position: absolute;
+	top: 9px;
+	width: inherit;
+	height: inherit;
+	background: inherit;
+	-webkit-transition: inherit;
+    -moz-transition: inherit;
+    -o-transition: inherit;
+	transition: inherit;
+}
+.icon-3-slab .icon::after {
+	content: "";
+	position: absolute;
+	top: 18px;
+	width: inherit;
+	height: inherit;
+	background: inherit;
+	-webkit-transition: inherit;
+    -moz-transition: inherit;
+    -o-transition: inherit;
+	transition: inherit;
+}
+.icon-close {
+	position: absolute;
+	opacity: 1;
+	visibility: visible;
+	-webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+.icon-close .icon {
+    -webkit-transform: rotate(45deg); 
+	-ms-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	top: 10px;
+}
+.icon-close .icon::before {
+	opacity: 0;
+}
+.icon-close .icon::after {
+	-webkit-transform: rotate(-95deg); 
+	-ms-transform: rotate(-95deg);
+	-moz-transform: rotate(-95deg);
+	-o-transform: rotate(-95deg);
+	transform: rotate(-95deg);
+	top: 0;
+}
+
+/* HEADER */
+
+#header{
+	width: 100%;
+	height: 185px;
+	background-color: #f1f1f1;
+	background: url("../images/header.jpg") no-repeat;
+	background-size: auto 100%;
+	background-position: 54px 0; 
+}
+
+#best-designer-ever{
+	margin-top: 72px;
+	height: 45px;
+	cursor: pointer;
+}
+#best-designer-ever:hover{
+	opacity: .5;
+	filter: alpha(opacity=.5);
+}
+
+/* INTRO */
+
+.intro-description:first-child {
+	margin-top: 0;
+}
+
+.intro-description {
+	color: #555;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1.25em;
+	font-weight: 300;
+	line-height: 1em;
+	margin: 1.5em 0;
+}
+
+.transition {
+	font-style: italic;
+}
+
+.tagline {
+	margin: 35px 0 0px;
+	font-family: Bebas Neue;
+	font-weight: 300;
+	font-size: 1.75em;
+	line-height: 1.1em;
+	letter-spacing: .5px;
+	color: #444;
+}
+.tagline::before, .tagline::after {
+	display: inline-block;
+	content: "";
+	background: url("../images/smart-quote.png") no-repeat;
+	background-size: 11px auto;
+	height: 13px;
+	width: 11px;
+	vertical-align: top;
+}
+.tagline::before {
+	margin: 1px 3px 0px -14px;
+}
+.tagline::after {
+	margin-left: 2px;
+	-ms-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+	transform: scaleX(-1) scaleY(-1);
 }
 
 /* Modal Windows */
@@ -705,15 +654,12 @@ color: #CDC16E;
 /* MOBILE RESPONSIVENESS*/
 
 .mobile {
-	dislay: none;
+	display: none;
 }
 
 @media (max-width: 1300px) {
-	.main-col {
+	.main-content {
 		width: 550px;
-		/*left: 30%;*/
-	}
-	.col2, #intro, .main-col {
 		margin-left: 30%;
 	}
 
@@ -829,13 +775,6 @@ color: #CDC16E;
 		right: 0;
 		z-index: 5;
 		background: #333;
-		/* background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 8%, rgba(0,0,0,0.7) 28%, rgba(22,22,22,0.7) 100%); /* FF3.6+ */
-		/* background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,1)), color-stop(8%,rgba(0,0,0,0.85)), color-stop(28%,rgba(0,0,0,0.7)), color-stop(100%,rgba(22,22,22,0.7))); /* Chrome,Safari4+ */
-		/* background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,0.85) 8%,rgba(0,0,0,0.7) 28%,rgba(22,22,22,0.7) 100%); /* Chrome10+,Safari5.1+ */
-		/* background: -o-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,0.85) 8%,rgba(0,0,0,0.7) 28%,rgba(22,22,22,0.7) 100%); /* Opera 11.10+ */
-		/* background: -ms-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,0.85) 8%,rgba(0,0,0,0.7) 28%,rgba(22,22,22,0.7) 100%); /* IE10+ */
-		/* background: linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(0,0,0,0.85) 8%,rgba(0,0,0,0.7) 28%,rgba(22,22,22,0.7) 100%); /* W3C */
-		/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#b3161616',GradientType=1 ); /* IE6-9 */ 
 		visibility: hidden;
 		opacity: 0;
 		-webkit-transition: all .3s ease;
@@ -1010,30 +949,14 @@ color: #CDC16E;
 }
 
 @media (min-width: 650px) and (max-width: 925px) {
-	.main-col, .col2 {
-		position: static;
-		margin-left: auto;
-		margin-right: auto;
-		padding: 0;
-	}
-
-	#intro{
+	.main-content {
 		margin-left: auto;
 		margin-right: auto;
 	}
 }
 
 @media (max-width: 650px) {
-
-	.main-col, .col2 {
-		position: static;
-		width: 90%;
-		margin-left: auto;
-		margin-right: auto;
-		padding: 0;
-	}
-
-	#intro {
+	.main-content {
 		width: 90%;
 		margin-left: auto;
 		margin-right: auto;
