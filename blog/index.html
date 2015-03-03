@@ -7,8 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="../css/portfolio.css" />
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/start/jquery-ui.css"
-type="text/css" rel="Stylesheet" />
 <!--Favicon Stuff-->
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
@@ -33,79 +31,76 @@ type="text/css" rel="Stylesheet" />
 </head>
 <body id="blog-body">
 
-	<div class="modal-bg-shadow"></div>
+<div class="modal-bg-shadow"></div>
 
 
-	<!-- Open Button for Responsive Navigation -->
-	<div id="nav-btn">
-		<a class="btn-link icon-3-slab" href="index.html#nav"><div class="icon icon-slab-slice"></div></a>
-	</div>
+<!-- Open Button for Responsive Navigation -->
+<div id="nav-btn">
+	<a class="btn-link icon-3-slab" href="index.html#nav"><div class="icon icon-slab-slice"></div></a>
+</div>
 
-	<!-- Navigation -->
-	<nav id="nav">
-		<div id="nav-anchor"></div>
-		<a id="nav-close-btn" class="btn-link icon-3-slab icon-close" href="index.html#main"><div class="icon icon-slab-slice"></div></a>
-		<div id="nav-bar">
-			<ul>
-				<li class="nav-item" id="nav-item-work"><a href="../index.html">Work</a></li>
-				<div class="nav-divider"></div>
-				<li class="nav-item"><a class="nav-active" href="#blog">Blog</a></li>
-				<div class="nav-divider"></div>
-				<li class="nav-item"><a href="../contact.html">Cont<span class="bebas-ta"></span>act</a></li>
-			</ul>
+<!-- Navigation -->
+<nav id="nav">
+	<div id="nav-anchor"></div>
+	<a class="nav-link" id="nav-close-btn" class="btn-link icon-3-slab icon-close" href="index.html#main"><div class="icon icon-slab-slice"></div></a>
+	<ul id="nav-bar">
+		<li class="nav-item" id="nav-item-work"><a class="nav-link" href="../index.html">Work</a></li>
+		<div class="nav-divider"></div>
+		<li class="nav-item"><a class="nav-link nav-active" href="#blog">Blog</a></li>
+		<div class="nav-divider"></div>
+		<li class="nav-item"><a class="nav-link" href="../contact.html">Cont<span class="bebas-ta"></span>act</a></li>
+	</ul>
+	<a id="nav-mask" class="nav-responsive" href="#main"></a>
+</nav><!-- /Navigation -->
+
+<div id="main-wrap">
+	<!-- Header -->
+	<section id="header">
+		<div class="main-content core-column">
+			<a href="../index.html"><img id="best-designer-ever" src="../images/m-j-schoen-logo.png" alt="M. J. Schoen" /></a>
 		</div>
-		<a id="nav-mask" class="nav-responsive" href="#main"></a>
-	</nav><!-- /Navigation -->
+	</section>
 
-	<div id="main-wrap">
-		<!-- Header -->
-		<section id="header">
-			<div class="col2">
-				<a href="../index.html"><img id="best-designer-ever" src="../images/m-j-schoen-logo.png" alt="M. J. Schoen" /></a>
-			</div>
-		</section>
+	<!-- Intro -->
+	<section id="intro" class="main-content core-column">
+		<!-- <p class="intro-description">Hey, I'm a User Experience Designer</p> -->
+		<p class="intro-description">This is where I aim to try something different</p>
+		<p class="intro-description">A blog of crude sketches, radical thought, and creative rebellion</p>
+		<!-- <p class="intro-description">Beyond UX, I'm also an artist, designer, and programmer</p> -->
+		<p class="intro-description"><a class="std-link" href="../index.html">( back to portfolio )</a></p>
+		<p class="intro-description transition">Enjoy:</p>
+	</section>
 
-		<!-- Intro -->
-		<!--<section id="intro">
-			<p class="intro-description">Hey, I'm a User Experience Designer who's passionate about the overlap of art and technology.</p>
-			<p class="intro-description">I believe websites have the power to delight, evoke emotion, and stretch what's humanly possible.</p>
-			<p class="intro-description">User experiences are my specialty, but I'm also an artist, designer, and programmer.</p>
-			<p class="intro-description transition">Check out a selected portfolio of my work below:</p>
-		</section>-->
-		<section id="intro">
-			<p class="intro-description">Hey, I'm a User Experience Designer</p>
-			<p class="intro-description">This blog is a place to put any and all ideas related to the human experience. And some extremely unrelated ones. </p>
-		</section>
-
-		<!--Link to JQuery and Essential Scripts. This is loaded after content above the fold is displayed so that the page is perceived to load faster-->
-		 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script><!-- jquery-UI
-		hosted on Google's Ajax CDN-->
-		<script src="../js/jquery.scrollTo-1.4.3.1-min.js" type="text/javascript"></script> 
-		<script type="text/javascript" src="../js/portfolio.js"></script>
-			
-		<!-- Blog -->
-		<section id="blog" class="main-col">
-			<div class="divider" id="work-divider"></div>
-			<div class="piece">
-				<p class="title">First Blog Post</p>
-				<img class="portfolio-img" src="../images/portfolio-ink-series.jpg" />
-				<div class="caption">
-					<div class="description">
-						<p class="text">Investigating the wonders of web blog posts.</p>
-					</div>
+	<!-- Link to JQuery and Essential Scripts. This is loaded after content above the fold is displayed so that the page is perceived to load faster -->
+	 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="../js/jquery.scrollTo-1.4.3.1-min.js" type="text/javascript"></script> 
+	<script type="text/javascript" src="../js/portfolio.js"></script>
+		
+	<!-- Portfolio -->
+	<section id="blog" class="main-content">
+		<div class="divider"></div>
+		<div class="piece blog-post-teaser">
+			<!--Title-->
+			<p class="title blog-title">First Blog Post</p>
+			<img class="portfolio-img" src="../images/portfolio-ink-series.jpg" />
+			<div class="caption">
+				<!--Description-->
+				<br>
+				<div class="description">
+					<p class="text">The wonders of a blog post.</p>
 				</div>
-				<div id="img-steves-boards" class="divider"></div>
 			</div>
+			<div id="" class="divider"></div>
+		</div>
 
-		</section><!-- /Blog-Contents -->
+	</section><!-- /Blog -->
 
-	</div><!-- /Main Wrap -->
+</div><!-- /Main Wrap -->
 
 
 
-	<!-- Additional Linked Script Files -->
-	<script src="../js/jquery.localscroll-1.2.7-min.js" type="text/javascript"></script> 
+<!-- Additional Linked Script Files -->
+<script src="../js/jquery.localscroll-1.2.7-min.js" type="text/javascript"></script> 
 
 
 
