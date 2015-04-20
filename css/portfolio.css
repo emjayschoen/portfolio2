@@ -105,7 +105,8 @@ a {
 	transition: all .2s ease;
 }
 .std-link:hover {
-	opacity: .5;
+	opacity: .6;
+	filter: alpha(opacity=.6);
 }
 
 .starts-with-double-quote {
@@ -113,13 +114,13 @@ a {
 }
 
 .bebas-ta {
-	margin-left: -1.4px;
+	margin-left: -1.2px;
 }
 .bebas-at {
-	margin-left: -1.9px;
+	margin-left: -1.6px;
 }
 .bebas-ly {
-	margin-left: -2.3px;
+	margin-left: -2.2px;
 }
 
 #main-wrap {
@@ -171,18 +172,27 @@ a {
 	text-decoration: none;
 }
 
-.nav-item {
+.title {
 	margin: 0;
-	padding: 10px 0;
-	font-family: Bebas Neue;
-	font-size: 1.75em;
-	font-weight: 700;
-	line-height: 22px;
-	letter-spacing: .5px;
+	font-family: Oswald;
+	font-weight: 500;
+	line-height: 1em;
+	letter-spacing: 0.6px;
 	color: #444;
+}
+
+#nav-bar .title {
+	text-transform: uppercase;
 	text-align: right;
+	transform: scaleX(0.98);
 	list-style: none;
 	cursor: pointer;
+}
+
+.nav-item.title {
+	padding: 12px 0;
+	font-size: 1.25em;
+	margin-right: -2px;
 }
 .nav-item:hover {
 	opacity: .6;
@@ -217,6 +227,16 @@ a {
     -o-transition: all .1s ease;
 	transition: all .1s ease;
 }
+.nav-subitem .title{
+	display: none;
+	float: right;
+	width: 100%;
+	font-size: 1.125em;
+	margin: 7px 32px 0 0;
+	padding-right: 3px;
+	opacity: .8;
+	filter: alpha(opacity=.8);
+}
 .nav-img{
 	display: inline;
 	position: absolute;
@@ -230,35 +250,21 @@ a {
     -o-transition: all .1s ease;
 	transition: all .1s ease;
 }
-.nav-subitem:hover .nav-img {
-	opacity: .5;
-	filter: alpha(opacity=.5);
-}
-.nav-title{
-	display: none;
-	float: right;
-	width: 100%;
-	text-align: right;
-	font-family: Bebas Neue;
-	font-size: 1.5em;
-	font-weight: 700;
-	letter-spacing: .5px;
-	margin: 2px 32px 0 0;
-	padding-right: 3px;
-	color: #444;
-	opacity: .8;
-	filter: alpha(opacity=.8);
-}
 
 .nav-subitem:hover {
 	height: 32px !important;
 }
-.nav-subitem:hover .nav-title {
+.nav-subitem:hover .nav-img {
+	opacity: .5;
+	filter: alpha(opacity=.5);
+}
+.nav-subitem:hover .title {
 	display: block;
 }
 
 #nav-btn, #nav-close-btn{
 	display: none;
+	position: absolute;
 }
 
 /* MAIN CONTENT */
@@ -301,17 +307,10 @@ a {
 	vertical-align: top;
 }
 
-.title{
-	margin: 0;
+.piece .title {
 	top: 0;
-
-	display: inline;
-
-	font-family: Bebas Neue;
-	font-size: 2.25em;
+	font-size: 1.875em;
 	font-weight: 700;
-	letter-spacing: .5px;
-	color: #444;
 }
 
 .expand{
@@ -349,14 +348,16 @@ a {
 }
 
 .in-progress{
-	padding: 3px 7px;
+	display: inline-block;
+	padding: 6px 7px;
 	background-color: #444;
 	color: #fff;
-	font-family: Bebas Neue;
-	font-size: 22px;
-	font-weight: 700;
+	font-family: Oswald;
+	font-size: 1em;
+	font-weight: 500;
 	font-style: normal;
-	letter-spacing: .5px;
+	text-transform: uppercase;
+	letter-spacing: .6px;
 }
 
 .text {
@@ -445,6 +446,40 @@ a {
 	-o-transform: rotate(-95deg);
 	transform: rotate(-95deg);
 	top: 0;
+}
+
+.intro-description.small {
+	font-size: 1em;
+}
+.back-link {
+	position: relative;
+	display: inline-block;
+	width: 18px;
+	height: 1px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	background-color: #404040;
+}
+.back-link::before, .back-link::after {
+	content: "";
+	position: absolute;
+	height: inherit;
+	width: 7px;
+	left: -1px;
+	background-color: inherit;
+}
+.back-link::before {
+	top: 2px;
+	transform: rotate(40deg);
+}
+.back-link::after {
+	bottom: 2px;
+	transform: rotate(-40deg);
+}
+
+
+.std-link .back-link {
+	background-color: #DD5368;
 }
 
 /* HEADER */
@@ -552,7 +587,24 @@ html.modal-on .modal-bg-shadow {
 	z-index: 200;
 	/*transition: all .3s ease-in-out;*/
 	/*transition: top .3s ease-in-out, left .3s ease-in-out, background .3s ease-in-out;*/
+}
 
+.piece.modal-box::before, .piece.modal-box::after {
+	position: absolute;
+	top: 15px;
+	right: 10px;
+	content: "";
+	width: 25px;
+	height: 1px;
+	background-color: #A6A6A6;
+	cursor: pointer;
+	z-index: 250;
+}
+.piece.modal-box::before {
+	transform: rotate(45deg);
+}
+.piece.modal-box::after {
+	transform: rotate(-45deg);
 }
 
 .piece.modal-box .portfolio-img {
@@ -880,6 +932,7 @@ color: #CDC16E;
 		font-family: Georgia;
 		font-size: 0.9em;
 		font-style: italic;
+		text-transform: none;
 		color: #898989;
 		background: #E0E0E0;
 	}
@@ -930,7 +983,7 @@ color: #CDC16E;
 		opacity: 1;
 		filter: alpha(opacity=1);
 	}
-	.js-ready .nav-title {
+	.js-ready .nav-subitem .title {
 		display: block;
 		font-size: 1.4em;
 		margin: 10px 44px 0 0;
@@ -1005,8 +1058,8 @@ color: #CDC16E;
 	.mobile {
 		display: block;
 	}
-	.title{
-		font-size: 32px !important;
+	.piece .title{
+		font-size: 28px !important;
 	}
 	.tagline::before, .tagline::after{
 		background-size: 9px auto;
