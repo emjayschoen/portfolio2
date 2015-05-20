@@ -2,7 +2,8 @@ $(document).ready(function(){
 
 	var INTRO_LINK = "#intro";
 	var WORK_LINK = "#work";
-	var SCROLL_DURATION = 800;
+	var BEAT = 200;
+	var SCROLL_DURATION = 4*BEAT;
 	var MOBILE_NAV_BREAKPOINT = 925;
 
 	// Control smooth scrolling
@@ -206,23 +207,217 @@ $(document).ready(function(){
 
 	/* Experimental Modal Box JS */
 
-
-	$(".piece").click( function(event){
+	$("#boards-reg .modal-lnk").click( function(event){
 		/*$(this).css({
 			"left": $(this).offset().left, 
 			"top": $(this).offset().top-$(window).scrollTop(), 
 			"position": "fixed"
 		});
 		$(this).delay(100).css({"transition": "all .3s ease-in-out"});*/ 
+
+		/*
 		$html.addClass("modal-on");
 		$(this).addClass("modal-box");
+
+		Experimental:
+		*/
+
+		$(".boards-modal").show();
+		$(".boards-reg").hide();
+		$html.addClass("modal-on");
+		var $parentPiece = $(this).closest(".piece");
+		$parentPiece.addClass("modal-box-2");
 	});
-	$(".modal-bg-shadow").click( function(event){
+	//$(".modal-bg-shadow").on('click', closeModal);
+	//$(".boards-modal .portfolio-img").on('click', function(){ alert("img")});
+
+	function closeModal(){
+		alert("close modal");
 		$html.removeClass("modal-on");
-		$(".piece").removeClass("modal-box");
-		/* $(".piece").removeClass("modal-box").css({"top": "0", "left": "0", "position": "relative", "transition": "none"});*/
+		$(".piece").removeClass("modal-box-2");
+		$(".boards-modal").hide();
+		$(".boards-reg").show();
+	}
+
+	/* Experimental Modal Box 2 */
+
+/*	$(".piece:not('.modal-box-3') .modal-lnk").click( function(event){
+		var portfolioImgHeight = 415;
+		var dur = 4*BEAT;
+
+		var $parentPiece = $(this).closest(".piece");
+		console.log("parentPiece: "+$parentPiece.attr('class'));
+		if(!$parentPiece.hasClass("modal-box-3")){
+			var $modal = $parentPiece.find(".modal");
+			var modalHeight = $modal.height();
+			var modalTop = $modal.offset().top - $(window).scrollTop();
+
+			$modal.addClass("fixed-modal");
+
+			var contentLeft = parseInt($(".main-content").css("margin-left"), 10);
+			var modalPadding = parseInt($modal.css("padding-left"), 10);
+			var htmlWidth = $(document).width();
+			var modalWidth = htmlWidth * .7 + modalPadding*2;
+
+			var modalLeft =  contentLeft - modalPadding;
+			var finalModalLeft = (htmlWidth - modalWidth) * .5;
+			console.log("modalLeft: " + modalLeft);
+			console.log("modalWidth "+ modalWidth);
+
+			$html.addClass("modal-on");
+			$parentPiece.addClass("modal-box-3").css({"height":modalHeight});
+
+
+
+			$modal.css({"top":modalTop, "left":modalLeft, "height":modalHeight});
+			$modal.animate( { top: 80 }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+			$modal.animate( { left: finalModalLeft }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+			$modal.animate( { height: portfolioImgHeight*2 }, { duration: dur, queue: false, easing: "easeInOutCubic" });
+				//.animate( { top: 80, left: 0, height: portfolioImgHeight*2 }, 800, "easeInOutCubic"
+			$parentPiece.find(".extra-img").delay( dur-200 ).fadeIn(200);
+
+			
+
+			$modal.css({"top":modalTop, "left":modalLeft, "height":modalHeight});
+				//.addClass("modal-animate")
+			$modal.animate( { top: 80 }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+			$modal.animate( { left: finalModalLeft }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+			//$modal.animate( { top: 80 }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+			//$modal.animate( { left: finalModalLeft }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+			//$modal.animate( { height: portfolioImgHeight*2 }, { duration: dur, queue: false, easing: "easeInOutCubic" });
+				//.animate( { top: 80, left: 0, height: portfolioImgHeight*2 }, 800, "easeInOutCubic"
+			$parentPiece.find(".extra-img").delay( dur-200 ).fadeIn(200);
+
+			$modal.delay(2*dur).queue( function(){ $(this).addClass("modal-done").dequeue(); });
+		}
+	});*/
+
+	var modalOn = false;
+
+	$(".piece:not('.modal-box-3') .modal-lnk").click( function(event){
+		var portfolioImgHeight = 415;
+		var dur = 4*BEAT;
+
+		var $parentPiece = $(this).closest(".piece");
+		console.log("parentPiece: "+$parentPiece.attr('class'));
+		if(!$parentPiece.hasClass("modal-box-3")){
+			modalOn = true;
+			var $modal = $parentPiece.find(".modal");
+			var parentHeight = $parentPiece.height();
+			var modalHeight = $modal.height();
+			var modalTop = $modal.offset().top - $(window).scrollTop()-15;
+
+			$modal.addClass("fixed-modal");
+
+
+			var $modalTemplate = $(".modal-template");
+			var templateTop = parseInt($modalTemplate.css("top"), 10);
+			var templateLeft = parseInt($modalTemplate.css("left"), 10);
+			var templateWidth = parseInt($modalTemplate.css("width"), 10);
+
+			var contentLeft = parseInt($(".main-content").css("margin-left"), 10);
+			var modalPadding = parseInt($modal.css("padding-left"), 10);
+			var htmlWidth = $(document).width();
+			//var modalWidth = htmlWidth * .6 + modalPadding*2;
+			//var modalWidth = templateWidth + modalPadding*2;
+			var modalWidth = parseInt($modal.css("width"), 10) + modalPadding*2;
+
+			var modalLeft =  contentLeft - modalPadding;
+			var finalModalLeft = (htmlWidth - modalWidth) * .5;
+
+			$html.addClass("modal-on");
+			$parentPiece.addClass("modal-box-3").css({"height":parentHeight});
+
+			//$modal.queue(function(nxt) {
+			//      $(this).css({"top":modalTop, "left":modalLeft, "height":modalHeight});
+			//      nxt();
+			//}).queue(function(next) {
+			      //$(this).addClass("modal-animate");
+			//     next();
+			//})
+			$modal.css({"top":modalTop, "left":modalLeft/*, "height":modalHeight*/});
+				//.addClass("modal-animate")
+			//$modal.animate( { top: templateTop }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+			//$modal.animate( { left: templateLeft }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+
+			var translateTop = templateTop-modalTop;
+			var translateLeft = templateLeft-modalLeft;
+			var translateScale = templateWidth/modalWidth;
+
+			console.log("modalTop "+ modalTop);
+			console.log("templateTop "+ templateTop);
+			console.log("translateTop "+ translateTop);
+			console.log("contentLeft "+ contentLeft);
+			console.log("modaLeft "+ modalLeft);
+			console.log("templateLeft "+ templateLeft);
+			console.log("translateLeft "+ translateLeft);
+			console.log("modalWidth "+ modalWidth);
+			console.log("templateWidth "+ templateWidth);
+			console.log("translateScale "+ translateScale);
+
+			$modal.css("width",templateWidth).animate( { "left": templateLeft, "top": templateTop }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+			//$modal.transition( { }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+			//$modal.animate( { width: templateWidth }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+			//$modal.transition( { scale: translateScale }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+			//$modal.animate( { top: 80 }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+			//$modal.animate( { left: finalModalLeft }, { duration: dur, queue: false, easing: "easeInOutCubic"  });
+			//$modal.animate( { height: portfolioImgHeight }, { duration: dur, queue: false, easing: "easeInOutCubic" });
+				//.animate( { top: 80, left: 0, height: portfolioImgHeight*2 }, 800, "easeInOutCubic"
+			//$parentPiece.find(".extra-img").delay( dur-200 ).fadeIn(200);
+
+			$(".additional-section").delay(3*BEAT).queue( function(next){ 
+				if(modalOn){
+					$(this).slideDown({ duration: dur, easing: "easeInOutSine" });
+					$(".modal-controls").fadeIn(dur);
+				}
+				next();
+			});
+			$modal.delay(2*dur).queue( function(next){ 
+				if(modalOn){
+					$(this).addClass("modal-done"); 
+				}
+				next();
+			});
+		}
+	});
+
+
+
+	// $(".modal-bg-shadow").on('click', closeModal2);
+
+
+	$(".modal-container").on("click", function(event){
+		var $bubbleParents = $(event.target).parents();
+		/*console.log("bubbleParent: "+$bubbleParents.className);*/
+		var isBackground = true;
+		for(var i = 0; i < $bubbleParents.length; i++){
+			if($bubbleParents[i].className.indexOf("modal") == 0){
+				isBackground = false;
+			}
+		}
+		if(isBackground){
+			closeModal2();
+		}
+	});
+
+	// Bind the Escape key to close the modal
+	$(document).keydown(function(e){
+	    if(e.keyCode === 27)
+			closeModal2();
 
 	});
+
+	function closeModal2(){
+		modalOn = false;
+		var pieceWidth = $(".core-column").css("width");
+		console.log("closeModal");
+		$html.removeClass("modal-on");
+		$(".extra-img").hide();
+		$(".piece").removeClass("modal-box-3").css("height","100%");
+		$(".modal").removeClass("fixed-modal").removeClass("modal-done").css("transform", "none").css("width", pieceWidth);/*.css("height","100%")*/;
+		$(".additional-section").hide();
+		$(".modal-controls").hide();
+	}
 
 	
 });
